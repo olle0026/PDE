@@ -13,12 +13,7 @@ clear; close all; clc;
 f = @(x) 3 - 2*cos(15*x) + 4*sin(20*x);
 
 for N = [2^5, 2^8]
-    x = zeros(1,N);
-    for j = 0:N-1
-        x(j+1) = 2*pi*j/N;
-    end
-    y = f(x);
-    z = mydft(y);
+    z = dccoeff(N,f);
     [a0, a, b] = myfouriercoeff(z);
 
     fprintf('\nN = %d\n', N);
@@ -36,12 +31,8 @@ clear;
 g = @(x) abs(cos(x));
 
 N = 2^10;
-x = zeros(1,N);
-for j = 0:N-1
-    x(j+1) = 2*pi*j/N;
-end
-y = g(x);
-z = mydft(y);
+z = dccoeff(N,g);
+
 [a0, a, ~] = myfouriercoeff(z);
 
 nmax = 10;
