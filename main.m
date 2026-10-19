@@ -56,7 +56,7 @@ legend('Computed','Exact')
 clear; close all; clc;
 
 % a
-N = 2^12;
+N = 2^10;
 x = linspace(0,2*pi,N);
 y = h(x);                       
 z = mydft(y);
