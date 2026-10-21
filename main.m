@@ -118,3 +118,17 @@ end
 %% Task 4
 clear; close all; clc;
 
+fid = fopen("filtre.data");
+Y = fscanf(fid,'%f',[1 inf]);
+fclose(fid);
+figure(), plot(Y)
+Z = fft(Y);
+wcut = 1;
+N = length(Z);
+for j=1:N
+    if (abs(Z(j)) <  wcut)
+        Z(j) = 0;
+    end
+end
+T = ifft(Z);
+figure(), plot(T)
