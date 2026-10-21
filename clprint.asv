@@ -1,0 +1,13 @@
+function clprint(Y, name)
+%Input
+% Y = list
+% name = name of list
+N = length(Y);
+fprintf("%s = [", name)
+for i = 1:N
+    fprintf("%G%+Gi", real(Y(i)), imag(Y(i)))
+    if i ~= N
+        fprintf(", ")
+    end
+end
+fprintf("]\n")

@@ -3,8 +3,11 @@ clear; close all; clc;
 
 y = [0,3,-2*sqrt(3),6,2*sqrt(3),3];
 
-z = mydft(y)
-w = myidft(y)
+z = mydft(y);
+w = myidft(y);
+
+clprint(z,"z", 2)
+clprint(w,"w", 2)
 
 %% Task 2
 clear; close all; clc;
