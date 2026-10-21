@@ -123,7 +123,7 @@ Y = fscanf(fid,'%f',[1 inf]);
 fclose(fid);
 figure(), plot(Y)
 Z = fft(Y);
-wcut = 1;
+wcut = 0.05*max(abs(Z));
 N = length(Z);
 for j=1:N
     if (abs(Z(j)) <  wcut)
