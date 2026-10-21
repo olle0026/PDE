@@ -116,6 +116,7 @@ for i = [3,5,10,100]
     fprintf('\nE(%d)  = %.4f (computed), %.4f (exact)',i, E_comp(i),  E_exact(i));
 end
 %% Task 4
+%a
 clear; close all; clc;
 
 fid = fopen("filtre.data");
@@ -132,3 +133,33 @@ for j=1:N
 end
 T = ifft(Z);
 figure(), plot(T)
+
+%% b
+
+clear
+load('handel');% load sound, e.g: 'splat','gong','handel','train'
+sound(y,Fs); % play sound
+Y = fft(y);% fft from Matlab
+W=Y;
+M=max(abs(Y));
+wr = 0.25; % specify the relative threshold value
+N = length(y);
+for j=1:N
+    if (abs(Y(j)) <  wr*max(abs(Y))) % compress
+        W(j) = 0;
+    end
+end
+% compressed signal and original signal expressed as a sparse array
+WS = sparse(W);
+YS = sparse(Y);
+
+% compare size before-after
+before = whos('YS');
+after = whos('WS');
+comprRatio = before.bytes/after.bytes
+
+% play back the sound
+pause(2);% delay in order to finish playing original sound
+disp('Play compressed signal');
+w= real(ifft(full(WS)));
+sound(w, Fs)
