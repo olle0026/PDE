@@ -1,11 +1,23 @@
-function clprint(Y, name)
+function clprint(Y, name, decimals)
 %Input
 % Y = list
 % name = name of list
+% decimals = amount of decimals
+
 N = length(Y);
 fprintf("%s = [", name)
 for i = 1:N
-    fprintf("%G%+Gi", real(Y(i)), imag(Y(i)))
+    tempR = round(real(Y(i)), decimals);
+    tempC = round(imag(Y(i)), decimals);
+
+    if tempR ~= 0
+        fprintf("%g", tempR)
+    end
+
+    if tempC ~= 0
+        fprintf("%g", tempR)
+    end
+    fprintf("%g%+gi", tempR, tempC)
     if i ~= N
         fprintf(", ")
     end
