@@ -90,6 +90,7 @@ for m = 1:length(Ms)
 end
 
 % b
+t = linspace(0, pi, 10000);
 t = t(2:end-1); % open interval                       
 Mmax = 100;
 
