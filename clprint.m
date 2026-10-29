@@ -22,6 +22,10 @@ for i = 1:N
         fprintf("%gi", tempC)
     end
 
+    if tempC == 0 && tempR == 0
+        print("0")
+    end
+
     if i ~= N
         fprintf(", ")
     end
